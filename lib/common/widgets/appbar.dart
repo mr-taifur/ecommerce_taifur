@@ -1,17 +1,6 @@
+import 'package:ecommerce_anything/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import '../../../utils/constants/colors.dart';
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: FAppBar(),
-    );
-  }
-}
 
 class FAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FAppBar({
