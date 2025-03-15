@@ -1,6 +1,8 @@
-import 'package:ecommerce_anything/utils/constants/colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+
+import '../../utils/constants/colors.dart';
 
 class FAppBar extends StatelessWidget implements PreferredSizeWidget {
   const FAppBar({
