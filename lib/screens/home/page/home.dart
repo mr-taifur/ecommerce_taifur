@@ -1,7 +1,7 @@
-// ignore_for_file: unused_import
+// home.dart
 import 'package:flutter/material.dart';
 import '../../../common/widgets/appbar.dart' show FAppBar;
-import '../../../common/widgets/product_card.dart';
+import '../../widgets/bottom_nav_bar.dart' show BottomNavBar;
 import '../../widgets/product_cart.dart';
 
 class Home extends StatefulWidget {
@@ -15,12 +15,11 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
-  /// Define different background colors for each navbar item
   final List<Color> _backgroundColors = [
-    Colors.blue.shade50,  // Home
-    Colors.red.shade50,   // Wishlist
-    Colors.green.shade50, // Cart
-    Colors.purple.shade50 // Profile
+    Colors.blue.shade50,  
+    Colors.red.shade50,   
+    Colors.green.shade50, 
+    Colors.purple.shade50 
   ];
 
   void _onItemTapped(int index) {
@@ -32,7 +31,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _backgroundColors[_selectedIndex], // Change home page background
+      backgroundColor: _backgroundColors[_selectedIndex], 
       appBar: const FAppBar(
         title: "Mega Shop",
         backButton: false,
@@ -45,7 +44,7 @@ class _HomeState extends State<Home> {
               margin: const EdgeInsets.all(14.0),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               decoration: BoxDecoration(
-                color: _backgroundColors[_selectedIndex], // Change poster background
+                color: _backgroundColors[_selectedIndex], 
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -87,7 +86,6 @@ class _HomeState extends State<Home> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
-                  // Left product card
                   Expanded(
                     child: ProductCard(
                       imagePath: 'assets/image/panda.jpg',
@@ -97,10 +95,7 @@ class _HomeState extends State<Home> {
                       reviews: '(120)',
                     ),
                   ),
-
                   SizedBox(width: 8),
-
-                  // Middle product card
                   Expanded(
                     child: ProductCard(
                       imagePath: 'assets/image/panda.jpg',
@@ -110,10 +105,7 @@ class _HomeState extends State<Home> {
                       reviews: '(98)',
                     ),
                   ),
-
                   SizedBox(width: 8),
-
-                  // Right product card
                   Expanded(
                     child: ProductCard(
                       imagePath: 'assets/image/panda.jpg',
@@ -129,31 +121,9 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.black, // Selected icon color
-        unselectedItemColor: Colors.grey,
-        backgroundColor: _backgroundColors[_selectedIndex], // Change navbar background color
-        showUnselectedLabels: true,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Home",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Wishlist",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: "Cart",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile",
-          ),
-        ],
+      bottomNavigationBar: BottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
       ),
     );
   }
