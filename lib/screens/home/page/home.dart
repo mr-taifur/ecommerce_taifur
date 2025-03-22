@@ -4,8 +4,22 @@ import '../../../common/widgets/appbar.dart' show FAppBar;
 import '../../../common/widgets/product_card.dart';
 import '../../widgets/product_cart.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +63,8 @@ class Home extends StatelessWidget {
                     ],
                   ),
                   Image.asset(
-                    'assets/image/girl.png', // Replace with your image path
-                    width: MediaQuery.of(context).size.width * 0.3, // Adjust size as needed
+                    'assets/image/girl.png', 
+                    width: MediaQuery.of(context).size.width * 0.3, 
                     height: 150,
                     fit: BoxFit.contain,
                   ),
@@ -75,7 +89,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 8), // Space between products
+                  SizedBox(width: 8), 
 
                   // Middle product card
                   Expanded(
@@ -88,7 +102,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
 
-                  SizedBox(width: 8), // Space between products
+                  SizedBox(width: 8), 
 
                   // Right product card
                   Expanded(
@@ -105,6 +119,31 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        showUnselectedLabels: true,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: "Wishlist",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: "Cart",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profile",
+          ),
+        ],
       ),
     );
   }
