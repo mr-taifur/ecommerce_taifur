@@ -15,6 +15,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
+  /// Define different background colors for each navbar item
+  final List<Color> _backgroundColors = [
+    Colors.blue.shade50,  // Home
+    Colors.red.shade50,   // Wishlist
+    Colors.green.shade50, // Cart
+    Colors.purple.shade50 // Profile
+  ];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -24,6 +32,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _backgroundColors[_selectedIndex], // Change home page background
       appBar: const FAppBar(
         title: "Mega Shop",
         backButton: false,
@@ -36,7 +45,7 @@ class _HomeState extends State<Home> {
               margin: const EdgeInsets.all(14.0),
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: _backgroundColors[_selectedIndex], // Change poster background
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
@@ -63,8 +72,8 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   Image.asset(
-                    'assets/image/girl.png', 
-                    width: MediaQuery.of(context).size.width * 0.3, 
+                    'assets/image/girl.png',
+                    width: MediaQuery.of(context).size.width * 0.3,
                     height: 150,
                     fit: BoxFit.contain,
                   ),
@@ -89,7 +98,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
-                  SizedBox(width: 8), 
+                  SizedBox(width: 8),
 
                   // Middle product card
                   Expanded(
@@ -102,7 +111,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
 
-                  SizedBox(width: 8), 
+                  SizedBox(width: 8),
 
                   // Right product card
                   Expanded(
@@ -123,8 +132,9 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.black, // Selected icon color
         unselectedItemColor: Colors.grey,
+        backgroundColor: _backgroundColors[_selectedIndex], // Change navbar background color
         showUnselectedLabels: true,
         items: const [
           BottomNavigationBarItem(
